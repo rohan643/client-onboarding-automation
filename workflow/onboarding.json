@@ -1,0 +1,189 @@
+{
+  "name": "Client Onboarding \u2014 Full Automation",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Stripe Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        200,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "2",
+      "name": "Extract Client Data",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        400,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "3",
+      "name": "Send DocuSign",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        600,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "4",
+      "name": "Wait for Signature",
+      "type": "n8n-nodes-base.wait",
+      "position": [
+        800,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "5",
+      "name": "Create Notion Workspace",
+      "type": "n8n-nodes-base.notion",
+      "position": [
+        1000,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "6",
+      "name": "Create Slack Channel",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        1200,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "7",
+      "name": "Send Welcome Email",
+      "type": "n8n-nodes-base.gmail",
+      "position": [
+        1400,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "8",
+      "name": "Send Kickoff Invite",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1600,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "9",
+      "name": "Alert Internal Team",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        1800,
+        300
+      ],
+      "parameters": {}
+    }
+  ],
+  "connections": {
+    "Stripe Webhook": {
+      "main": [
+        [
+          {
+            "node": "Extract Client Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Client Data": {
+      "main": [
+        [
+          {
+            "node": "Send DocuSign",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send DocuSign": {
+      "main": [
+        [
+          {
+            "node": "Wait for Signature",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait for Signature": {
+      "main": [
+        [
+          {
+            "node": "Create Notion Workspace",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Notion Workspace": {
+      "main": [
+        [
+          {
+            "node": "Create Slack Channel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Slack Channel": {
+      "main": [
+        [
+          {
+            "node": "Send Welcome Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Welcome Email": {
+      "main": [
+        [
+          {
+            "node": "Send Kickoff Invite",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Kickoff Invite": {
+      "main": [
+        [
+          {
+            "node": "Alert Internal Team",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "a7b8c9d0-e1f2-3456-0123-789012345678"
+}
