@@ -1,0 +1,33 @@
+notion:
+  template_page_id: "1a2b3c4d5e6f7890abcdef"
+  parent_page_id: "0987654321fedcba"
+  default_sections:
+    - "Project Scope"
+    - "Weekly Check-ins"
+    - "File Library"
+    - "Invoices"
+
+docusign:
+  template_id: "abc123-def456-ghi789"
+  signer_role: "Client"
+  cc_role: "Agency"
+
+slack:
+  workspace_id: "T01234ABCDE"
+  channel_prefix: "client-"
+  welcome_message: "Welcome to your dedicated channel! Your Notion workspace is pinned above."
+
+email:
+  from_name: "Rohan Mukherjee"
+  from_address: "texanrohan@gmail.com"
+  sequence:
+    - delay_hours: 0
+      subject: "Welcome to {agency_name} — here's everything you need"
+    - delay_hours: 24
+      subject: "What to expect in Week 1"
+    - delay_hours: 72
+      subject: "Your kickoff call is coming up"
+
+cal:
+  booking_link: "https://cal.com/rohan/kickoff"
+  event_title: "Kickoff Call — {client_company}"
